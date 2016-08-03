@@ -87,8 +87,8 @@ func main() {
 
 	var server string
 	var data string
-	flag.StringVar(&server, "zk", "127.0.0.1:2181", "")
-	flag.StringVar(&data, "data", "data", "")
+	flag.StringVar(&server, "zk", "127.0.0.1:2181", "the zookeeper cluster")
+	flag.StringVar(&data, "data", "127.0.0.1", "the ip of the node, you have to change it")
 
 	flag.Parse()
 

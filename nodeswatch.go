@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"github.com/samuel/go-zookeeper/zk"
 	"strings"
@@ -78,7 +79,11 @@ func init() {
 }
 
 func main() {
-	conn := connect("127.0.0.1:2181")
+	var server string
+	flag.StringVar(&server, "zk", "127.0.0.1:2181", "the zookeeper cluster")
+	flag.Parse()
+
+	conn := connect(server)
 	defer conn.Close()
 
 	snapshots, errors := mirror(conn, "/zk_test")
